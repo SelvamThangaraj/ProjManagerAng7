@@ -90,6 +90,17 @@ export class PmadduserComponent extends BaseService implements OnInit {
             console.log("Error", error);
           }
      );
+  }
+
+  sortUser(sortItem){
+    console.log("sortUser component sortItem=>"+sortItem);
+    this.userService.sortUsers(sortItem).subscribe((users) => {
+      console.log(JSON.stringify(users));
+      this.users = users;
+    },
+      (error) => {
+      });
+  
 
   }
 

@@ -53,15 +53,15 @@
           </div>
           <div class="col-sm-9 text-right" style="padding-right:0">
             <strong>Sort:</strong>
-            <button class="btn btn-default" (click)="sortUser(1)" style="margin-left:10px;">First Name
+            <button class="btn btn-default" (click)="sortUser('firstName')" style="margin-left:10px;">First Name
               <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isFirstNameAsc===true,
               'glyphicon-arrow-down':isFirstNameAsc===false}"></span>
             </button>
-            <button class="btn btn-default" (click)="sortUser(2)" style="margin-left:15px;">Last Name
+            <button class="btn btn-default" (click)="sortUser('lastName')" style="margin-left:15px;">Last Name
                 <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isLastNameAsc===true,
               'glyphicon-arrow-down':isLastNameAsc===false}"></span>
             </button>
-            <button class="btn btn-default" (click)="sortUser(3)" style="margin-left:15px;">Employee Id
+            <button class="btn btn-default" (click)="sortUser('employeeId')" style="margin-left:15px;">Employee Id
                 <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isEmpIdAsc===true,
               'glyphicon-arrow-down':isEmpIdAsc===false}"></span>
             </button>
