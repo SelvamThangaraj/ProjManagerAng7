@@ -26,10 +26,7 @@ export class PmadduserComponent extends BaseService implements OnInit {
   constructor(private http: HttpClient,private userService:UserService) {
     super();
     this.users = new Array<User>();
-
-
   }
-
 
   ngOnInit(): void {
     this.userToAdd = new User();
@@ -45,20 +42,7 @@ export class PmadduserComponent extends BaseService implements OnInit {
     });
 
 }
-  // public getUsers(): Observable<User[]> {
-
-  //   return this.http.get("http://localhost:8085/pm/users")
-  //     .pipe(map((res: Response) => {
-  //       console.log("getusers() res=>"+res);
-  //       //const data = res['users'];
-  //       const data = res;
-  //       return data;
-  //     }))
-  //     .pipe(catchError(this.handleError));
-
-  // }
-
-
+  
   resetAll() {
     this.userToAdd = new User();
 
@@ -74,25 +58,39 @@ export class PmadduserComponent extends BaseService implements OnInit {
           error => {
             console.log("Error", error);
           }
-        );
-    //let headers = new Headers({ 'Content-Type': 'application/json' });
-
-
-
-    // this.http.post("http://localhost:8085/pm/user",
-    //   this.userToAdd)
-    //   .subscribe(
-    //     data => {
-    //       console.log("POST Request is successful ", data);
-          
-    //     },
-    //     error => {
-    //       console.log("Error", error);
-    //     }
-    //   );
-
-      
+        );      
   }
 
+  editUser(user){
+    this.userToAdd=user;
+
+  }
+
+  updateUser(){
+    this.userService.updateUser(this.userToAdd)
+    .subscribe(
+     data => {
+       console.log("Update Request is successful ", data);
+       
+     },
+     error => {
+       console.log("Error", error);
+     }
+    );
+  }
+
+  deleteUser(user){
+     this.userService.deleteUser(user)
+         .subscribe(
+          data => {
+            console.log("Delete Request is successful ", data);
+            
+          },
+          error => {
+            console.log("Error", error);
+          }
+     );
+
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { map,catchError } from 'rxjs/operators';
@@ -45,20 +45,25 @@ export class UserService extends BaseService {
     }
 
     updateUser(user:User): Observable<any> {
-        return this.http.put(super.baseurl() + '/user',user)
-            .pipe(map((res: Response) => {
-                const data = super.extractData(res);
-                return data;
-            }))
-            .pipe(catchError(this.handleError));
+        
+        return this.http.put(super.baseurl() + '/user',user,{
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        });
+            // .pipe(map((res: Response) => {
+            //     const data = super.extractData(res);
+            //     return data;
+            // }))
+            //.pipe(catchError(this.handleError));
     }
 
    deleteUser(user:User): Observable<any> {
         return this.http.delete(super.baseurl() + '/user/'+user.userId)
-            .pipe(map((res: Response) => {
-                const data = super.extractData(res);
-                return data;
-            }))
+            // .pipe(map((res: Response) => {
+            //     const data = super.extractData(res);
+            //     return data;
+            // }))
             .pipe(catchError(this.handleError));
     }
 }   
