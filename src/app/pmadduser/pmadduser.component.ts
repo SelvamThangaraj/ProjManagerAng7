@@ -23,6 +23,9 @@ export class PmadduserComponent extends BaseService implements OnInit {
   buttonName: string;
   UserObservable: Observable<any[]>;
   tmpdata: Observable<any[]>;
+  showUpdateButton:boolean = false;
+  showAddButton:boolean = true;
+
   constructor(private http: HttpClient,private userService:UserService) {
     super();
     this.users = new Array<User>();
@@ -53,7 +56,7 @@ export class PmadduserComponent extends BaseService implements OnInit {
     this.userService.addUser(this.userToAdd).subscribe(
           data => {
             console.log("POST Request is successful ", data);
-            
+            this.getUsers();
           },
           error => {
             console.log("Error", error);
@@ -63,7 +66,8 @@ export class PmadduserComponent extends BaseService implements OnInit {
 
   editUser(user){
     this.userToAdd=user;
-
+    this.showUpdateButton=true;
+    this.showAddButton=false;
   }
 
   updateUser(){
@@ -71,12 +75,16 @@ export class PmadduserComponent extends BaseService implements OnInit {
     .subscribe(
      data => {
        console.log("Update Request is successful ", data);
-       
+       this.showUpdateButton=false;
+       this.resetAll();
+       this.showAddButton=true;
+       this.getUsers();
      },
      error => {
        console.log("Error", error);
      }
     );
+    
   }
 
   deleteUser(user){
@@ -84,7 +92,7 @@ export class PmadduserComponent extends BaseService implements OnInit {
          .subscribe(
           data => {
             console.log("Delete Request is successful ", data);
-            
+            this.getUsers();
           },
           error => {
             console.log("Error", error);
