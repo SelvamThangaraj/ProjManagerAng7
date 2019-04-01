@@ -1,0 +1,38 @@
+<div class="container">
+  <form id="addtaskform">
+
+    <table> 
+     <tr><td>Project :</td><td><input type = "text" name = "prjname"  ngModel></td> 
+     <br/>
+     <td><button class="btn btn-outline-secondary" type="button">Search</button></td> </tr>
+     <br/> 
+     <tr><td>Task :</td><input type="text" id="taskname"></tr>
+     <br/>
+     <tr><td><input type="checkbox" id="parentcheck">Parent task</td></tr>
+     <tr><td>Priority :</td><input class="slider form-control" type="range" min="0" max="30" id="priority"></tr>
+     <br/>
+     <tr><td>Parent task:</td><td><input type = "text" name = "parenttaskname"  ngModel></td> 
+     <br/>
+     <td><button class="btn btn-outline-secondary" type="button">Search</button></td> </tr>
+     <br/>
+     <tr>
+     <td>Start Date: </td><input type="date" id="stdate">
+     <td>End Date: </td><input type="date" id="enddate">
+     </tr>
+     <br/>
+      <tr><td>User :</td><td><input type = "text" name = "username"  ngModel></td> 
+      <br/>
+      <td><button class="btn btn-outline-secondary" (click)="onSearch()" type="button">Search</button></td> </tr>
+      <br/> 
+      <tr><td>
+          <input type = "submit" (click) = "addTask()" value = "Add"></td>
+          <td><input type = "submit" value = "Reset">
+        </td>   
+      </tr>
+
+    </table>
+    
+  </form>
+
+
+</div>

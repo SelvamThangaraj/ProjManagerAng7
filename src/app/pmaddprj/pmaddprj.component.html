@@ -1,0 +1,93 @@
+<div class="container">
+<form id="addprj">
+    <div class="row">
+        <div class="col-md-2">
+          <label>Project :</label>
+        </div>
+        <div class="col-md-2">
+          <input type="text" id="fname">
+        </div>
+    </div>
+    <br/>
+    <div class="row container">
+      
+      <input type="checkbox">
+      
+      
+        <label>set start and end date</label>
+      
+      
+         <input type="date" id="stdate" placeholder="start date">
+      
+      
+          <input type="date" id="enddate" placeholder="End date">
+      
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-2">
+      <label>Priority :</label>
+      </div>
+      <div class="col-md-2">
+      <input type="range" min="1" max="30" class="slider" id="priority">
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Manager : </label>
+        </div>
+        <div class="col-md-2">
+            <input type = "text" name = "managername"  ngModel>
+        </div> 
+        <div class="col-md-1">
+            <button class="btn btn-outline-secondary btn-sm" type="button">Search</button>
+        </div> 
+     </div>
+     <div class="row">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-outline-secondary btn-sm" (click)="onAdd()" type="button">Add</button>
+                 
+          <button class="btn btn-outline-secondary btn-sm" type="button">Reset</button>
+        </div>
+      </div>
+      <label>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        </label>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="search">
+      </div>
+      <div class="row">
+          <div class="col-md-2">
+              <label>Sort data by :</label>
+          </div>
+          <div class="col-md-1">
+              <button class="btn btn-outline-secondary btn-sm" type="button">Start date</button>
+          </div>
+          <div class="col-md-1">
+              <button class="btn btn-outline-secondary btn-sm" type="button">End date</button>
+          </div>
+          <div class="col-md-1">
+              <button class="btn btn-outline-secondary btn-sm" type="button">Priority</button>
+          </div>
+          <div class="col-md-1">
+               <button class="btn btn-outline-secondary btn-sm" type="button">Completed</button>
+          </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-md-2">
+        <textarea rows="5"></textarea>
+        </div>
+        <div class="col-md-1">
+          <label>Priority</label>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-outline-secondary btn-sm" type="button">Update</button>
+        </div>
+        <div class="col-md-1">
+             <button class="btn btn-outline-secondary btn-sm" type="button">Suspend</button>
+        </div>
+      </div>
+      
+</form>
+</div>
