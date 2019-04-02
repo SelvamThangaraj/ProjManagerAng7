@@ -14,6 +14,7 @@ export class PmaddprjComponent implements OnInit {
   projects:Array<Project>;
   showUpdateButton:boolean;
   showAddButton:boolean;
+  enableDateOpt:boolean;
   
   constructor(private http: HttpClient,private projectService:ProjectService) {
    
@@ -25,6 +26,7 @@ export class PmaddprjComponent implements OnInit {
     this.getProjects();
     this.showAddButton=true;
     this.showUpdateButton=false;
+    
   }
   onAdd(project){
     console.log("in addition");

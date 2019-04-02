@@ -11,15 +11,15 @@
     <br/>
     <div class="row container">
 
-      <input type="checkbox">
+      <input type="checkbox" [(ngModel)]="enableDateOpt"  name="enableDateOptions">
 
       <label>set start and end date</label>
 
 
-      <input type="date" name="stdate" [(ngModel)]="projectToAdd.startDate" placeholder="start date">
+      <input [disabled]="!enableDateOpt" type="date" name="stdate" [(ngModel)]="projectToAdd.startDate" placeholder="start date">
 
 
-      <input type="date" name="enddate" [(ngModel)]="projectToAdd.endDate" placeholder="End date">
+      <input [disabled]="!enableDateOpt" type="date" name="enddate" [(ngModel)]="projectToAdd.endDate" placeholder="End date">
 
     </div>
     <br/>
