@@ -1,93 +1,129 @@
 <div class="container">
-<form id="addprj">
+  <form id="addprj">
     <div class="row">
-        <div class="col-md-2">
-          <label>Project :</label>
-        </div>
-        <div class="col-md-2">
-          <input type="text" id="fname">
-        </div>
+      <div class="col-md-2">
+        <label>Project :</label>
+      </div>
+      <div class="col-md-2">
+        <input type="text" name="projTitle" [(ngModel)]="projectToAdd.projectTitle" id="fname">
+      </div>
     </div>
     <br/>
     <div class="row container">
-      
+
       <input type="checkbox">
-      
-      
-        <label>set start and end date</label>
-      
-      
-         <input type="date" id="stdate" placeholder="start date">
-      
-      
-          <input type="date" id="enddate" placeholder="End date">
-      
+
+      <label>set start and end date</label>
+
+
+      <input type="date" name="stdate" [(ngModel)]="projectToAdd.startDate" placeholder="start date">
+
+
+      <input type="date" name="enddate" [(ngModel)]="projectToAdd.endDate" placeholder="End date">
+
     </div>
     <br/>
     <div class="row">
       <div class="col-md-2">
-      <label>Priority :</label>
+        <label>Priority :</label>
       </div>
       <div class="col-md-2">
-      <input type="range" min="1" max="30" class="slider" id="priority">
+        <input type="range" name="priority" [(ngModel)]="projectToAdd.priority"   min="1" max="30" class="slider" id="priority">
       </div>
     </div>
     <br/>
     <div class="row">
-        <div class="col-md-2">
-            <label>Manager : </label>
-        </div>
-        <div class="col-md-2">
-            <input type = "text" name = "managername"  ngModel>
-        </div> 
-        <div class="col-md-1">
-            <button class="btn btn-outline-secondary btn-sm" type="button">Search</button>
-        </div> 
-     </div>
-     <div class="row">
-        <div class="col-md-12 text-center">
-          <button class="btn btn-outline-secondary btn-sm" (click)="onAdd()" type="button">Add</button>
-                 
-          <button class="btn btn-outline-secondary btn-sm" type="button">Reset</button>
-        </div>
+      <div class="col-md-2">
+        <label>Manager : </label>
       </div>
-      <label>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        </label>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="search">
+      <div class="col-md-2">
+        <input type="text" name="managername" ngModel>
       </div>
-      <div class="row">
-          <div class="col-md-2">
-              <label>Sort data by :</label>
-          </div>
-          <div class="col-md-1">
-              <button class="btn btn-outline-secondary btn-sm" type="button">Start date</button>
-          </div>
-          <div class="col-md-1">
-              <button class="btn btn-outline-secondary btn-sm" type="button">End date</button>
-          </div>
-          <div class="col-md-1">
-              <button class="btn btn-outline-secondary btn-sm" type="button">Priority</button>
-          </div>
-          <div class="col-md-1">
-               <button class="btn btn-outline-secondary btn-sm" type="button">Completed</button>
-          </div>
+      <div class="col-md-1">
+        <button class="btn btn-outline-secondary btn-sm" type="button">Search</button>
       </div>
-      <br/>
-      <div class="row">
-        <div class="col-md-2">
-        <textarea rows="5"></textarea>
-        </div>
-        <div class="col-md-1">
-          <label>Priority</label>
-        </div>
-        <div class="col-md-1">
-            <button class="btn btn-outline-secondary btn-sm" type="button">Update</button>
-        </div>
-        <div class="col-md-1">
-             <button class="btn btn-outline-secondary btn-sm" type="button">Suspend</button>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button *ngIf="showAddButton" class="btn btn-outline-secondary btn-sm" (click)="onAdd(projectToAdd)" type="button">Add</button>
+        <button *ngIf="showUpdateButton" class="btn btn-outline-secondary btn-sm" (click)="onUpdate(projectToAdd)" type="button">Update</button>        
+        <button class="btn btn-outline-secondary btn-sm" (click)="resetAll()" type="button">Reset</button>
       </div>
-      
-</form>
-</div>
+    </div>
+  </form>
+    <label>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    </label>
+    <div class="panel panel-primary">
+      <div class="panel-heading">View Project</div>
+      <div class="panel-body">
+        <div class="row" style="margin-bottom:15px">
+          <div class="col-sm-12">
+            <div class="col-sm-3" style="padding-left:0">
+              <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+            </div>
+            <div class="col-sm-9 text-right" style="padding-right:0">
+              <strong>Sort:</strong>
+              <button class="btn btn-default" (click)="sortProject('startDate')" style="margin-left:10px;">Start Date
+                <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isFirstNameAsc===true,
+                      'glyphicon-arrow-down':isFirstNameAsc===false}"></span>
+              </button>
+              <button class="btn btn-default" (click)="sortProject('endDate')" style="margin-left:15px;">End Date
+                <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isLastNameAsc===true,
+                      'glyphicon-arrow-down':isLastNameAsc===false}"></span>
+              </button>
+              <button class="btn btn-default" (click)="sortProject('priority')" style="margin-left:15px;">Priority
+                <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isEmpIdAsc===true,
+                      'glyphicon-arrow-down':isEmpIdAsc===false}"></span>
+              </button>
+              <button class="btn btn-default" (click)="sortProject('completed')" style="margin-left:15px;">Completed
+                <span class="glyphicon" [ngClass]="{'glyphicon-arrow-up':isEmpIdAsc===true,
+                      'glyphicon-arrow-down':isEmpIdAsc===false}"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-container" *ngFor="let project of projects|filteruser:{projectTitle:searchText,startDate:searchText,endDate:searchText, priority:searchText}">
+            <div class="container">
+                <div class="row list-group">
+                  <div class="col-sm-8 list-group-item">
+                     <div>
+                        Project:{{project.projectTitle}}
+                     </div>
+                     <div class="col-sm-6 list-group-item">
+                       <div>
+                        No of Tasks:4
+                        </div>
+                        <div >
+                        Start Date: {{project.startDate}}
+                        </div>
+                     </div>
+                     <div class="col-sm-6 list-group-item">
+                        <div>
+                          Completed:
+                        </div>
+                        <div>
+                          End Date: {{project.endDate}}
+                         </div>
+                     </div>
+                    
+                  </div>
+                  <div class="col-sm-2 list-group-item">
+                    <div>
+                      Priority
+                     </div>
+                     <div>
+                        {{project.priority}}
+                     </div>
+                  </div>
+                  <div class="col-sm-2 list-group-item">
+                      <div class="view-buttons">
+                          <button class="btn btn-primary" (click)="editProject(project)">Update</button>
+                          <button class="btn btn-danger" (click)="suspendProject(project)">Suspend</button>
+                        </div>
+                  </div>
+                </div>
+              </div>     
+        </div>       
+    </div>   
+  </div>
