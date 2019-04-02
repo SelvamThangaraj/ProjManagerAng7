@@ -22,12 +22,12 @@ export class UserService extends BaseService {
     public getUsers(): Observable<User[]> {
         
             return this.http.get(super.baseurl() + '/users')
-              .pipe(map((res: Response) => {
-                console.log("getusers() res=>"+res);
-                //const data = res['users'];
-                const data = res;
-                return data;
-              }))
+            //   .pipe(map((res: Response) => {
+            //     console.log("getusers() res=>"+res);
+            //     //const data = res['users'];
+            //     const data = res;
+            //     return data;
+            //   }))
               .pipe(catchError(this.handleError));
         
           }
