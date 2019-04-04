@@ -14,7 +14,7 @@ export class ProjectService extends BaseprojectService {
   }
 
   
-  public getProjects(): Observable<Project[]> {
+  public getProjects(): Observable<any> {
       
           return this.http.get(super.baseurl() + '/projects')
           //   .pipe(map((res: Response) => {
@@ -61,7 +61,7 @@ export class ProjectService extends BaseprojectService {
           .pipe(catchError(this.handleError));
   }
 
-  sortProjects(sortItem:string):Observable<Project[]>{
+  sortProjects(sortItem:string):Observable<any>{
       return this.http.get(super.baseurl() + '/projects/sort/'+sortItem)
       // .pipe(map((res: Response) => {
       //   console.log("getusers() res=>"+res);

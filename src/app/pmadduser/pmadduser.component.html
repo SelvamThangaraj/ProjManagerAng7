@@ -1,5 +1,5 @@
 <div class="container">
-<form id="adduser">
+<form id="adduser" >
   <div class="row">
     <div class="col-md-2">
       <label>First name:</label>
@@ -8,8 +8,8 @@
       <!-- <input type="text" id="firstname"  [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}"> -->
       <input type="text" class="form-control" 
       id="firstname" placeholder="Enter firstname" 
-      [(ngModel)]="userToAdd.firstName" [ngModelOptions]="{standalone: true}">
-
+      [(ngModel)]="userToAdd.firstName" [ngModelOptions]="{standalone: true}" required>
+            
     </div>
   </div>
   <br/>
@@ -18,7 +18,7 @@
         <label>Last name:</label>
       </div>
       <div class="col-md-2">
-  <input type="text" value={{lastName}} id="lastName"  [(ngModel)]="userToAdd.lastName" [ngModelOptions]="{standalone: true}">
+  <input type="text" value={{lastName}} id="lastName"  [(ngModel)]="userToAdd.lastName" [ngModelOptions]="{standalone: true}" required>
       </div>
   </div>
   <br/>
@@ -27,14 +27,14 @@
         <label>Employee Id:</label>
       </div>
       <div class="col-md-2">
-        <input type="text" id="employeeId" value="{{employeeId}}"  [(ngModel)]="userToAdd.employeeId" [ngModelOptions]="{standalone: true}" >
+        <input type="text" required id="employeeId" value="{{employeeId}}"  [(ngModel)]="userToAdd.employeeId" [ngModelOptions]="{standalone: true}" >
       </div>
   </div>
   <br/>
   <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <button *ngIf="showAddButton" class="btn btn-outline-secondary btn-sm" type="button" (click)="addUser()">Add</button>
+          <button *ngIf="showAddButton" class="btn btn-outline-secondary btn-sm" type="submit" (click)="addUser()">Add</button>
           <button *ngIf="showUpdateButton" class="btn btn-outline-secondary btn-sm" type="button" (click)="updateUser()">Update</button>       
           <button class="btn btn-outline-secondary btn-sm" type="button" (click)= "resetAll()">Reset</button>
         </div>

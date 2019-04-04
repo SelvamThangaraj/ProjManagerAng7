@@ -22,7 +22,7 @@ export class PmaddprjComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.projectToAdd=new Project();
+    this.resetAll();
     this.getProjects();
     this.showAddButton=true;
     this.showUpdateButton=false;
@@ -92,6 +92,7 @@ export class PmaddprjComponent implements OnInit {
   }
   resetAll() {
     this.projectToAdd = new Project();
+    this.projectToAdd.priority=0;
 
   };
 

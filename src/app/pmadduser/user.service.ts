@@ -12,7 +12,7 @@ export class UserService extends BaseService {
     }
 
     
-    public getUsers(): Observable<User[]> {
+    public getUsers(): Observable<any> {
         
             return this.http.get(super.baseurl() + '/users')
             //   .pipe(map((res: Response) => {
@@ -60,7 +60,7 @@ export class UserService extends BaseService {
             .pipe(catchError(this.handleError));
     }
 
-    sortUsers(sortItem:string):Observable<User[]>{
+    sortUsers(sortItem:string):Observable<any>{
         return this.http.get(super.baseurl() + '/users/sort/'+sortItem)
         // .pipe(map((res: Response) => {
         //   console.log("getusers() res=>"+res);
